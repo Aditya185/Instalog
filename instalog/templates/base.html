@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load static %}
+<html>
+<head>
+<title>Instalog</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel ="stylesheet" href="{% static 'instalog/css/master.css' %}">
+<script type="text/javascript" src="{% static 'instalog/js/master.js' %}">
+</script>
+
+
+<meta charset="utf-8">
+</head>
+<body>
+<nav class="navbar mynav" role="navigation" id='navbar'>
+<div class="container">
+  <a class="navbar-brand mynav" href="{% url 'home' %}"> Instalog </a>
+  <ul class='nav navbar-nav navbar-right'>
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'posts:create' %}">Post</a></li>
+    <li><a href="{% url 'groups:all' %}">Groups</a></li>
+    <li><a href="{% url 'groups:create' %}">Create Group</a></li>
+    <li><a href="{% url "accounts:logout" %}">Log Out</a></li>
+    {% else %}
+    <li><a href="{% url 'groups:all' %}">Groups</a></li>
+    <li><a href="{% url "accounts:login" %}">Log In</a></li>
+    <li><a href="{% url "accounts:signup" %}">Sign Up</a></li>
+    {% endif %}
+  </ul>
+</div>
+</nav>
+<div class="container mycontent">
+
+
+  {% block content %}
+
+  {% endblock %}
+</div>
+</body>
+
+</html>
