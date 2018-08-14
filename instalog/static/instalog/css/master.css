@@ -1,6 +1,8 @@
 body{
   margin: 0;
   overflow: hidden;
-  background-color: black;
+  background-size: cover;
+  background-repeat:no-repeat;
+  background: linear-gradient( 75deg, orange, red);
   color:white;
 }
